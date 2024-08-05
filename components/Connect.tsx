@@ -14,7 +14,7 @@ const Connect = () => {
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
           Eager to collaborate and create impactful digital experiences? Reach
-          out, and let's turn ideas into reality!
+          out, and let&apos;s turn ideas into reality!
         </p>
         <a href="mailto:sayanpalb@gmail.com">
           <MagicButton
