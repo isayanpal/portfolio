@@ -1,34 +1,54 @@
 "use client";
 import React from "react";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { projects } from "@/data";
+import { FaLocationArrow } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-export function CardDemo() {
+export function Card({
+  title,
+  description,
+  img,
+  site,
+}: {
+  title: string;
+  description: string;
+  img: string;
+  site: string;
+}) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-      {projects.map((project) => (
-        <div key={project.title} className="w-full group/card">
-          <Link href={project.link} target="__blank">
-            <div
-              className={cn(
-                "cursor-pointer overflow-hidden relative card h-60 sm:h-72 md:h-80 lg:h-96 rounded-xl shadow-xl flex flex-col justify-end p-4",
-                "bg-cover bg-center"
-              )}
-              style={{
-                backgroundImage: `url(${project.thumbnail})`,
-              }}
-            >
-              <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
-              <div className="z-10">
-                <h1 className="font-bold text-lg md:text-xl lg:text-2xl text-white relative shadow-blue-500">
-                  {project.title}
-                </h1>
-              </div>
-            </div>
-          </Link>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      key={title}
+      className="max-w-sm bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <div>
+        <img className="rounded-t-xl" src={img} />
+      </div>
+      <div className="p-5">
+        <div>
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {title}
+          </h5>
         </div>
-      ))}
-    </div>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {description}
+        </p>
+        <Link
+          href={site}
+          target="__blank"
+          className="inline-flex gap-2 items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Visit
+          <FaLocationArrow />
+        </Link>
+      </div>
+    </motion.div>
   );
 }

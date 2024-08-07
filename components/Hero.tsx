@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 import { Spotlight } from "./ui/Spotlight";
 import { TypewriterEffect } from "./ui/TypewriterEffect";
 import MagicButton from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const words = [
@@ -56,11 +59,16 @@ const Hero = () => {
             business success.
           </p>
           <a className="" href="#projects">
-            <MagicButton
-              title="See my work"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <MagicButton
+                title="See my work"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </motion.div>
           </a>
         </div>
       </div>
